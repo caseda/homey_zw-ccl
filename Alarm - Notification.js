@@ -2,7 +2,7 @@
  * Homey CommandClass
  * Alarm / Notification
  * Versions 1, 2 / 3 - 8
- * 
+ *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
 */
@@ -18,19 +18,15 @@
  * are described in the user manual (or an installer manual).
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_ALARM',
-	'command_get': 'ALARM_GET',
-	'command_get_parser': () => {
-		return {
-			'Alarm Type': '[#TYPEALARM#]'
-		};
-	},
-	'command_report': 'ALARM_REPORT',
-	'command_report_parser': report => {
-		if (report['Alarm Type'] === '[#TYPEALARM#]')
-			return report['Alarm Level'] === '[#ALARMLEVEL#]';
-
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_ALARM',
+	command_get: 'ALARM_GET',
+	command_get_parser: () => ({
+		'Alarm Type': '[#TYPEALARM#]'
+	}),
+	command_report: 'ALARM_REPORT',
+	command_report_parser: report => {
+		if (report['Alarm Type'] === '[#TYPEALARM#]') return report['Alarm Level'] === '[#ALARMLEVEL#]';
 		return null;
 	}
 }
@@ -53,27 +49,21 @@
  * You can remove the Set and it's Parser if not wanted to be turned off
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_ALARM',
-	'command_get': 'ALARM_GET',
-	'command_get_parser': () => {
-		return {
-			'Alarm Type': '[#TYPEALARM-1#]'
-			'Z-Wave Alarm Type': [#TYPEALARM-2#]
-		};
-	},
-	'command_set': 'ALARM_SET',
-	'command_set_parser': value => {
-		return {
-			'Z-Wave Alarm Type': [#TYPEALARM-2#],
-			'Z-Wave Alarm State': if (value) ? 255 : 0
-		};
-	},
-	'command_report': 'ALARM_REPORT',
-	'command_report_parser': report => {
-		if (report['Z-Wave Alarm Type'] === '[#TYPEALARM-2#]')
-			return report['Z-Wave Alarm Event'] === [#ALARMEVENT#];
-		
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_ALARM',
+	command_get: 'ALARM_GET',
+	command_get_parser: () => ({
+		'Alarm Type': '[#TYPEALARM-1#]'
+		'Z-Wave Alarm Type': [#TYPEALARM-2#]
+	}),
+	command_set: 'ALARM_SET',
+	command_set_parser: value => ({
+		'Z-Wave Alarm Type': [#TYPEALARM-2#],
+		'Z-Wave Alarm State': if (value) ? 255 : 0
+	}),
+	command_report: 'ALARM_REPORT',
+	command_report_parser: report => {
+		if (report['Z-Wave Alarm Type'] === '[#TYPEALARM-2#]') return report['Z-Wave Alarm Event'] === [#ALARMEVENT#];
 		return null;
 	}
 }
@@ -101,21 +91,17 @@
  * where # = given below with [#]
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_NOTIFICATION',
-	'command_get': 'NOTIFICATION_GET',
-	'command_get_parser': () => {
-		return {
-			'V1 Alarm Type': [#TYPEALARM#],
-			'Notification Type': '[#TYPENOTIFICATION#]',
-			'Event': [#ALARMEVENT#]
-		};
-	},
-	'command_report': 'NOTIFICATION_SET',
-	'command_report_parser': report => {
-		if (report['Notification Type'] === '[#TYPENOTIFICATION#]')
-			return report['Z-Wave Alarm Event'] === [#ALARMEVENT#];
-		
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_NOTIFICATION',
+	command_get: 'NOTIFICATION_GET',
+	command_get_parser: () => ({
+		'V1 Alarm Type': [#TYPEALARM#],
+		'Notification Type': '[#TYPENOTIFICATION#]',
+		Event: [#ALARMEVENT#]
+	}),
+	command_report: 'NOTIFICATION_SET',
+	command_report_parser: report => {
+		if (report['Notification Type'] === '[#TYPENOTIFICATION#]') return report['Z-Wave Alarm Event'] === [#ALARMEVENT#];
 		return null;
 	}
 }
@@ -128,10 +114,10 @@
  * [#CAPABILITY#] = the used (temporary) capability
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_ALARM',
-	'command_get': 'ALARM_TYPE_SUPPORTED_GET',
-	'command_report': 'ALARM_TYPE_SUPPORTED_REPORT'
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_ALARM',
+	command_get: 'ALARM_TYPE_SUPPORTED_GET',
+	command_report: 'ALARM_TYPE_SUPPORTED_REPORT'
 }
 
 /*
@@ -145,7 +131,7 @@
  * EVENT FROM VERSION 8: ********
  ===============================================================================
  * 1 - Smoke Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -162,10 +148,10 @@
  ******** 7 - Maintenance required, Planned periodic inspection
  ******** 8 - Maintenance required, Dust in device
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 2 - CO Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -185,10 +171,10 @@
  ******** 6 - Alarm Silenced
  ******** 7 - Maintenance required, Planned periodic inspection
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 3 - CO2 Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -208,10 +194,10 @@
  ******** 6 - Alarm Silenced
  ******** 7 - Maintenance required, Planned periodic inspection
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 4 - Heat Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -237,10 +223,10 @@
  ******** 10 - Maintenance required, Dust in device
  ******** 11 - Maintenance required, Planned periodic inspection
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 5 - Water Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -271,11 +257,11 @@
 	[0]: 4 = Max
 
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  6 - ALARM: * Access Control Alarm
  6 - NOTIFICATION: * Acces Control
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -342,11 +328,11 @@
  ****---- 75 - Barrier detected short in Wall Station wires
  ****---- 76 - Barrier associated with non-Z-wave remote control.
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  7 - ALARM: * Burglar Alarm
  7 - NOTIFICATION: * Home Security
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -373,7 +359,7 @@
 
  ===============================================================================
  * 8 - Power Management Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -398,7 +384,7 @@
  ===============================================================================
  9 - ALARM: * System Alarm
  9 - NOTIFICATION: * System
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -411,10 +397,10 @@
  *****--- 6 - Tampering, Product covering removed
  *******- 7 - Emergency Shutoff
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 10 - Emergency Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -423,10 +409,10 @@
  **------ 2 - Contact Fire Service
  **------ 3 - Contact Medical Service
  **------ 254 - Unknown Event
- 
+
  ===============================================================================
  * 11 - Alarm Clock
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -441,7 +427,7 @@
 
  ===============================================================================
  * 12 - Appliance
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -471,7 +457,7 @@
 
  ===============================================================================
  * 13 - Home Health
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -492,7 +478,7 @@
 
  ===============================================================================
  * 14 - Siren
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -502,7 +488,7 @@
 
  ===============================================================================
  * 15 - Water Valve
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -537,7 +523,7 @@
 
  ===============================================================================
  * 16 - Weather Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -548,7 +534,7 @@
 
  ===============================================================================
  * 17 - Irrigation
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -574,7 +560,7 @@
 
  ===============================================================================
  * 18 - Gas Alarm
- 
+
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
 	[0]: # = Event that got inactive/cleared
@@ -592,4 +578,33 @@
  *******- 5 - Gas Alarm Test
  *******- 6 - Replacement Required, Unspecified reason
  *******- 254 - Unknown Event
+
+ ===============================================================================
+ * 19 - Pest control
+
+ ******** 0 - Event inactive
+	EVENT PARAMETERS:
+	[0]: # = Event that got inactive/cleared
+
+ ******** 1 - Trap armed
+	EVENT PARAMETERS:
+	[0]: # = Node Location Report
+
+	******** 2 - Trap armed, unknown location
+	******** 3 - Trap re-arm required
+	EVENT PARAMETERS:
+	[0]: # = Node Location Report
+
+	******** 4 - Trap re-arm required, unknown location
+	******** 5 - Pest detected
+	EVENT PARAMETERS:
+	[0]: # = Node Location Report
+
+	******** 6 - Pest detected, unknown location
+	******** 7 - Pest exterminated
+	EVENT PARAMETERS:
+	[0]: # = Node Location Report
+
+	******** 8 - Pest exterminated, unknown location
+	*******- 254 - Unknown Event
 */

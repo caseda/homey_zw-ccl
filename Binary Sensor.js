@@ -2,7 +2,7 @@
  * Homey CommandClass
  * Binary Sensor
  * Version 1 - 2
- * 
+ *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
 */
@@ -16,11 +16,11 @@
  * [#CAPABILITY#] = the used capability
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-	'command_get': 'SENSOR_BINARY_GET',
-	'command_report': 'SENSOR_BINARY_REPORT',
-	'command_report_parser': report => report['Sensor Value'] === 'detected an event'
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_SENSOR_BINARY',
+	command_get: 'SENSOR_BINARY_GET',
+	command_report: 'SENSOR_BINARY_REPORT',
+	command_report_parser: report => report['Sensor Value'] === 'detected an event'
 }
 
 /*
@@ -30,17 +30,17 @@
  * [#CAPABILITY#] = the used capability
 */
 
-'[#CAPABILITY#]': [
+[#CAPABILITY#]: [
 	{
-		'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-		'command_get': 'SENSOR_BINARY_GET',
-		'command_report': 'SENSOR_BINARY_REPORT',
-		'command_report_parser': report => report['Sensor Value'] === 'detected an event'
+		command_class: 'COMMAND_CLASS_SENSOR_BINARY',
+		command_get: 'SENSOR_BINARY_GET',
+		command_report: 'SENSOR_BINARY_REPORT',
+		command_report_parser: report => report['Sensor Value'] === 'detected an event'
 	},
 	{
-		'command_class': 'COMMAND_CLASS_BASIC',
-		'command_report': 'BASIC_SET',
-		'command_report_parser': report => report['Value'] === 255
+		command_class: 'COMMAND_CLASS_BASIC',
+		command_report: 'BASIC_SET',
+		command_report_parser: report => report.Value === 255
 	}
 ]
 
@@ -51,18 +51,16 @@
  * Type = Full name
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-	'command_get': 'SENSOR_BINARY_GET',
-	'command_get_parser': () => {
-		return {
-			'Sensor Type': '[#TYPESENSOR#]'
-		};
-	},
-	'command_report': 'SENSOR_BINARY_REPORT',
-	'command_report_parser': report => {
-		if (report['Sensor Type'] === '[#TYPESENSOR#]')
-			report['Sensor Value'] === 'detected an event'
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_SENSOR_BINARY',
+	command_get: 'SENSOR_BINARY_GET',
+	command_get_parser: () => ({
+		'Sensor Type': '[#TYPESENSOR#]'
+	}),
+	command_report: 'SENSOR_BINARY_REPORT',
+	command_report_parser: report => {
+		if (report['Sensor Type'] === '[#TYPESENSOR#]') return report['Sensor Value'] === 'detected an event';
+		return null;
 	}
 }
 
@@ -74,10 +72,10 @@
  * [#CAPABILITY#] = the used (temporary) capability
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_SENSOR_BINARY',
-	'command_get': 'SENSOR_BINARY_SUPPORTED_GET_SENSOR',
-	'command_report': 'SENSOR_BINARY_SUPPORTED_SENSOR_REPORT'
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_SENSOR_BINARY',
+	command_get: 'SENSOR_BINARY_SUPPORTED_GET_SENSOR',
+	command_report: 'SENSOR_BINARY_SUPPORTED_SENSOR_REPORT'
 }
 
 /*

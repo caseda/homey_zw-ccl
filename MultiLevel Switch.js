@@ -2,7 +2,7 @@
  * Homey CommandClass
  * MultiLevel Switch
  * Versions 1 - 4
- * 
+ *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
 */
@@ -11,84 +11,78 @@
  * =========== GENERAL CODE: VERSION 1 ON/OFF ===========
 */
 
-'onoff': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		return {
-			'Value': (value > 0) ? 'on/enable' : 'off/disable'
-		};
+onoff: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => ({
+		Value: (value) ? 'on/enable' : 'off/disable',
+	}),
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return report.Value === 'on/enable';
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] > 0;
+		return null;
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => {
-		if (typeof report['Value'] === 'string')
-			return report['Value'] === 'on/enable';
-		
-		return report['Value (Raw)'][0] > 0;
-	}
 }
 
 /*
  * =========== GENERAL CODE: VERSION 1 DIM ===========
 */
 
-'dim': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		if (value >= 1) value = 0.99;
-		
-		return {
-			'Value': value * 100
-		};
+dim: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => ({
+		Value: Math.round(value * 99),
+	}),
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1 : 0);
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] / 99;
+		return null;
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => report['Value (Raw)'][0] / 100
 }
 
 /*
  * =========== GENERAL CODE: VERSIONS 2 - 3 ON/OFF ===========
 */
 
-'onoff': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		return {
-			'Value': (value > 0) ? 'on/enable' : 'off/disable',
-			'Dimming Duration': 'Factory default'
-		};
+onoff: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => ({
+		Value: (value) ? 'on/enable' : 'off/disable',
+		'Dimming Duration': 'Factory default',
+	}),
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return report.Value === 'on/enable';
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] > 0;
+		return null;
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => {
-		if (typeof report['Value'] === 'string')
-			return report['Value'] === 'on/enable';
-		
-		return report['Value (Raw)'][0] > 0;
-	}
 }
 
 /*
  * =========== GENERAL CODE: VERSIONS 2 - 3 DIM ===========
 */
 
-'dim': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		if (value >= 1) value = 0.99;
-		
-		return {
-			'Value': value * 100,
-			'Dimming Duration': 'Factory default'
-		};
+dim: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => ({
+		Value: Math.round(value * 99),
+		'Dimming Duration': 'Factory default',
+	}),
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1 : 0);
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] / 99;
+		return null;
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => report['Value (Raw)'][0] / 100
 }
 
 /*
@@ -96,18 +90,20 @@
  * !! REPORT UNTESTED !!
 */
 
-'onoff': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		return {
-			'Value': (value > 0) ? 'on/enable' : 'off/disable',
-			'Dimming Duration': 'Factory default'
-		};
+onoff: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => ({
+		Value: (value) ? 'on/enable' : 'off/disable',
+		'Dimming Duration': 'Factory default',
+	}),
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return report.Value === 'on/enable';
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] > 0;
+		return null;
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => report['Target Value (Raw)'][0] > 0;
 }
 
 /*
@@ -115,20 +111,20 @@
  * !! REPORT UNTESTED !!
 */
 
-'dim': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_GET',
-	'command_set': 'SWITCH_MULTILEVEL_SET',
-	'command_set_parser': value => {
-		if (value >= 1) value = 0.99;
-		
-		return {
-			'Value': value * 100,
-			'Dimming Duration': 'Factory default'
-		};
+dim: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_GET',
+	command_set: 'SWITCH_MULTILEVEL_SET',
+	command_set_parser: value => {
+		Value: Math.round(value * 99),
+		'Dimming Duration': 'Factory default',
 	},
-	'command_report': 'SWITCH_MULTILEVEL_REPORT',
-	'command_report_parser': report => report['Target Value (Raw)'][0] / 100;
+	command_report: 'SWITCH_MULTILEVEL_REPORT',
+	command_report_parser: report => {
+		if (typeof report.Value === 'string') return (report.Value === 'on/enable') ? 1 : 0);
+		if (report.hasOwnProperty('Value (Raw)')) return report['Value (Raw)'][0] / 99;
+		return null;
+	},
 }
 
 /*
@@ -136,10 +132,10 @@
  * [#CAPABILITY#] = the used (temporary) capability
 */
 
-'[#CAPABILITY#]': {
-	'command_class': 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-	'command_get': 'SWITCH_MULTILEVEL_SUPPORTED_GET',
-	'command_report': 'SWITCH_MULTILEVEL_SUPPORTED_REPORT'
+[#CAPABILITY#]: {
+	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+	command_get: 'SWITCH_MULTILEVEL_SUPPORTED_GET',
+	command_report: 'SWITCH_MULTILEVEL_SUPPORTED_REPORT'
 }
 
 /*
