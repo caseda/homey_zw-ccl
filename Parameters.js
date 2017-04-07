@@ -179,3 +179,43 @@ SETTING_ID: {
 		return buffer.writeUIntBE(value, 0, PARAMETER_SIZE);
 	},
  },
+
+ /*
+  * =========== SETTING A PARAMETER WITH FLOW CARD ===========
+  * This is not recommended to do for battery devices
+  * since parameters are only set when they are woken up
+  */
+ Homey.manager('flow').on('action.FLOW_ID', (callback, args) => {
+	const node = module.exports.nodes[args.device['token']];
+
+	// Let the flow card fail when no device is found
+	if (!node) return callback('device_unavailable', false);
+
+	if (args.hasOwnProperty("FLOW_VALUE_TO_BE_USE") && typeof node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION !== 'undefined') {
+		//Send parameter values to module
+		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
+			"Parameter Number": PARAMETER_NUMBER,
+			"Level": {
+				"Size": PARAMETER_SIZE,
+				"Default": false
+			},
+			'Configuration Value': new Buffer([PARAMETER_VALUE]) // PARAMETER VALUE must be a DECIMAL or HEXADECIMAL value
+		}, (err, result) => {
+			// If error, stop flow card
+			if (err) return callback(err, false);
+			// If properly transmitted, change the setting and finish flow card
+			if (result === "TRANSMIT_COMPLETE_OK") {
+				// If this parameter is not a setting(s) remove the setSetting function or use:
+				// `if (result === "TRANSMIT_COMPLETE_OK") return callback(null, true);`
+				// Set the device setting to this flow value
+				module.exports.setSettings(node.device_data, {
+					"SETTING_ID": SETTING_VALUE, // make sure the value type is the same as the setting type (IE: boolean)
+				});
+				return callback(null, true);
+			}
+			// if not completed with acknowledgment, let flow card fail
+			return callback(result, false);
+		});
+	}
+	return callback('unknown_error', false);
+});
