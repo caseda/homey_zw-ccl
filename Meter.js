@@ -243,63 +243,6 @@ Homey.manager('flow').on('action.reset_meter', (callback, args) => {
 });
 
 /*
- * =========== GENERAL CODE: RESET METER [SETTING] ===========
- * !!!!! THIS WILL RESET ALL ACCUMULATED METER VALUES !!!!!!
- * !! ONLY FROM VERSION 2 AND UP !!
- *
- * Make sure the user knows this action can't be reversed!
-*/
-// ========== APP.JSON: .settings[]: ==========
-{
-	"id": "reset_meter",
-	"type": "dropdown",
-	"label": {
-		"en": "Reset Power Meter (kWh)"
-	},
-	"hint": {
-		"en": "WARNING:\nThe reset action can't be undone.\n\nThe updated status will be shown after re-opening the settings"
-	},
-	"value": "1",
-	"values": [
-		{
-			"id": "0",
-			"label": {
-				"en": "Reset Failed"
-			}
-		},
-		{
-			"id": "1",
-			"label": {
-				"en": "Reset/Default"
-			}
-		},
-		{
-			"id": "2",
-			"label": {
-				"en": "Initiate reset"
-			}
-		}
-	]
-}
-// =========== DRIVER.JS .settings[]: ==========
-reset_meter: (newValue, oldValue, deviceData) => {
-	const node = module.exports.nodes[deviceData.token];
-	if (newValue === '2' && typeof node.instance.CommandClass.COMMAND_CLASS_METER !== 'undefined') {
-		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
-			if (result === 'TRANSMIT_COMPLETE_OK') {
-				module.exports.setSettings(node.device_data, {
-					reset_meter: '1',
-				});
-			} else {
-				module.exports.setSettings(node.device_data, {
-					reset_meter: '0',
-				});
-			}
-		});
-	}
-}
-
-/*
 
  ============ VERSION 1 - 3 =============
  * SUPPORTED SENSOR TYPES (*) AND SCALES:
