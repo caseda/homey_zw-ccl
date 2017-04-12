@@ -35,6 +35,15 @@ Creating the `driver.js` file is all contained into the readme of the [Z-Wave Dr
 It misses the `command_get_parser:` function in the readme documentation, that some Command Classes need.  
 But this can easily be found in the documentation here, or in one of the other Z-Wave apps (see bottom).  
 
+### app.json Config Composer
+If you think that the amount of drivers and or flow cards will become a lot.  
+Consider using the app.json [Config Composer](https://www.npmjs.com/package/node-homey-config-composer).  
+This will make it possible to separate each driver, action, condition and trigger that are in app.json, into it's own .json file.  
+That will make finding issues/changes a lot easier.  
+And it won't need any extra module in your app, the composer just combines the separate files into the app.json,  
+by typing 1 extra line in the CLI: `homeyConfig compose`.  
+Example apps that make use of the composer, are the [Fibaro](https://apps.athom.com/app/com.fibaro) and [Aeotec](https://apps.athom.com/app/com.aeotec) app.
+
 ### Magic Refiller (Donate)
 If you like what I, the Wizard of the (Z-)Waves, have done up until now.  
 Then here is a little somethin' if you want to replenish my Magic Powers:  
@@ -43,6 +52,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 ### Useful Pages/Documents:
 - [Developer Library](https://developers.athom.com/library/zwave/)
 - [Z-Wave Driver Core](https://github.com/athombv/node-homey-zwavedriver)
+- [Config Composer](https://www.npmjs.com/package/node-homey-config-composer)
 - [Z-Wave Alliance (Devices)](http://products.z-wavealliance.org/products)
 - [Z-Wave Documentation:](http://zwavepublic.com/specifications)
   - pdf: [List of Command Classes](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13548-1_list_of_defined_z-wave_command_classes.pdf)
