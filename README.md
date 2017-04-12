@@ -12,7 +12,16 @@ The easiest to begin is using the [Z-Wave Generator](https://developers.athom.co
 This uses the official Z-Wave alliance's database to create the initial start of the driver in `app.json`.  
 Which includes all parameters and device (type) id's.  
 This definitely needs to be checked afterwards if everything is right (and add for example the number range).  
-This still misses the capabilities though, how that is done is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
+And this still misses the capabilities.
+How that is done is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
+
+You can find the id's in:  
+The (unknown) device's settings -> Node Information after inclusion  
+Or the (unknown) device's node information when Chrome's Console is open while including  
+
+The entire list of supported Command Classes by the device are in:  
+CLI when debug is enabled in the driver.js, and the device has been included.  
+Or have Chrome's Console open while including.
 
 **Warning**:  
 If you are about to use information from:  
