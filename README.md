@@ -5,32 +5,42 @@ To start of your adventure in creating drivers for Homey is:
   - Manufacturer ID
   - Device Type ID
   - Device ID
-  - Parameters (from reliable sources/retrieved from the device itself)
-+ Useful pages/Documents:
-  - [Developer Library](https://developers.athom.com/library/zwave/)
-  - [Z-Wave Driver Core](https://github.com/athombv/node-homey-zwavedriver)
-  - [Z-Wave Alliance (Devices)](http://products.z-wavealliance.org/products)
-  - [Z-Wave Documentation:](http://zwavepublic.com/specifications)
-    - pdf: [List of Command Classes](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13548-1_list_of_defined_z-wave_command_classes.pdf)
-    - pdf: [Command Class Specifications](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
+  - Parameters (from reliable sources/retrieved from the device itself)  
 
+### app.json
 The easiest to begin is using the [Z-Wave Generator](https://developers.athom.com/library/zwave/generator/) Athom created.  
 This uses the official Z-Wave alliance's database to create the initial start of the driver in `app.json`.  
 Which includes all parameters and device (type) id's.  
 This definitely needs to be checked afterwards if everything is right (and add for example the number range).  
 This still misses the capabilities though, how that is done is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
 
-*Warning*: If you are about to use information from [openHab](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list) (CD-Jackson), [openZwave](https://github.com/OpenZWave/open-zwave) or [pepper1](http://www.pepper1.net/zwavedb/), take into consideration that _a lot_ of data is/can be incorrect.  
+**Warning**:  
+If you are about to use information from:
+[openHab](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list) (CD-Jackson);
+[openZwave](https://github.com/OpenZWave/open-zwave);
+[pepper1](http://www.pepper1.net/zwavedb/);
+Take into consideration that _a lot_ of data is/can be incorrect.
 
+### driver.js
 Creating the `driver.js` file is all contained into the readme of the [Z-Wave Driver Core](https://github.com/athombv/node-homey-zwavedriver).  
 It misses the `command_get_parser:` function in the readme documentation, that some Command Classes need.  
 But this can easily be found in the documentation here, or in one of the other Z-Wave apps (see bottom).  
 
+### Magic Refiller (Donate)
 If you like what I, the Wizard of the (Z-)Waves, have done up until now.  
 Then here is a little somethin' if you want to replenish my Magic Powers:  
 [![Paypal Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CH7AVGUY9KEQJ)
 
-(Supported) Z-Wave Apps/Brands: [Last Updated 12-04-2017]:
+### Useful Pages/Documents:
+- [Developer Library](https://developers.athom.com/library/zwave/)
+- [Z-Wave Driver Core](https://github.com/athombv/node-homey-zwavedriver)
+- [Z-Wave Alliance (Devices)](http://products.z-wavealliance.org/products)
+- [Z-Wave Documentation:](http://zwavepublic.com/specifications)
+  - pdf: [List of Command Classes](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13548-1_list_of_defined_z-wave_command_classes.pdf)
+  - pdf: [Command Class Specifications](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
+
+### Z-Wave Apps:
+[Last Updated 12-04-2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/Inversion-NL/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
