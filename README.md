@@ -15,10 +15,10 @@ This definitely needs to be checked afterwards if everything is right (and add f
 This still misses the capabilities though, how that is done is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
 
 **Warning**:  
-If you are about to use information from:
-[openHab](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list) (CD-Jackson);
-[openZwave](https://github.com/OpenZWave/open-zwave);
-[pepper1](http://www.pepper1.net/zwavedb/);
+If you are about to use information from:  
+[openHab](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list) (CD-Jackson);  
+[openZwave](https://github.com/OpenZWave/open-zwave);  
+[pepper1](http://www.pepper1.net/zwavedb/);  
 Take into consideration that _a lot_ of data is/can be incorrect.
 
 ### driver.js
