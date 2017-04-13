@@ -12,8 +12,8 @@ The easiest to begin is using the [Z-Wave Generator](https://developers.athom.co
 This uses the official Z-Wave alliance's database to create the initial start of the driver in `app.json`.  
 Which includes all parameters and device (type) id's.  
 This definitely needs to be checked afterwards if everything is right (and add for example the number range).  
-And this still misses the capabilities.
-How that is done is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
+And this still misses the capabilities, icons, learnmode and unlearnmode (optional).
+How that is added is shown in the [Developer Library](https://developers.athom.com/library/zwave/).  
 
 You can find the id's in:  
 The (unknown) device's settings -> Node Information after inclusion  
