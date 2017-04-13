@@ -2,7 +2,7 @@
  * Homey CommandClass
  * Binary Switch
  * Version 1 - 2
- * 
+ *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
 */
@@ -38,7 +38,7 @@
       	}),
       	command_report: 'SWITCH_BINARY_REPORT',
       	command_report_parser: report => {
-        	if (report.hasOwnProperty('Current Value')) return report['Current Value'] === 'on/enable';
+        	if (report && typeof report['Current Value'] !== 'undefined') return report['Current Value'] === 'on/enable';
         	return null;
       	},
 }
