@@ -358,7 +358,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 8 - Power Management Alarm
+ * 8 - ALARM: Power Management Alarm
+ * 8 - NOTIFICATION: Power Management
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
