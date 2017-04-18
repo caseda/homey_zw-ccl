@@ -13,9 +13,9 @@
  * This is to prevent the dimmer falling back into its previous value (on = 255)
 */
 "capabilitiesOptions": {
-    "onoff": {
-        "setOnDim": false
-    }
+	"onoff": {
+		"setOnDim": false
+	}
 },
 "drivers": {
 	...
@@ -34,11 +34,10 @@ onoff: {
 	}),
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: report => {
-		if (report && typeof report.Value === 'string') return report.Value === 'on/enable';
-		if (report && typeof report['Value (Raw)'] !== 'undefined') {
-			if (report['Value (Raw)'] === 254) return null;
-			return report['Value (Raw)'][0] > 0;
-		}
+		if (!report) return null;
+		if (typeof report.Value === 'string') return report.Value === 'on/enable';
+		if (typeof report.Value === 'number') return report.Value > 0;
+		if (typeof report['Value (Raw)'] !== 'undefined') return report['Value (Raw)'][0] > 0;
 		return null;
 	},
 }
@@ -59,11 +58,16 @@ dim: {
 	},
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: (report, node) => {
-		if (report && typeof report.Value === 'string') {
+		if (!report) return null;
+		if (typeof report.Value === 'string') {
 			if (node) module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 			return (report.Value === 'on/enable') ? 1.0 : 0.0;
 		}
-		if (report && typeof report['Value (Raw)'] !== 'undefined') {
+		if (typeof report.Value === 'number') {
+			if (node) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+			return report.Value / 99;
+		}
+		if (typeof report['Value (Raw)'] !== 'undefined') {
 			if (report['Value (Raw)'] === 254) return null;
 			if (node) module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 			if (report['Value (Raw)'][0] === 255) return 1.0;
@@ -87,8 +91,10 @@ onoff: {
 	}),
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: report => {
-		if (report && typeof report.Value === 'string') return report.Value === 'on/enable';
-		if (report && typeof report['Value (Raw)'] !== 'undefined') return report['Value (Raw)'][0] > 0;
+		if (!report) return null;
+		if (typeof report.Value === 'string') return report.Value === 'on/enable';
+		if (typeof report.Value === 'number') return report.Value > 0;
+		if (typeof report['Value (Raw)'] !== 'undefined') return report['Value (Raw)'][0] > 0;
 		return null;
 	},
 }
@@ -109,12 +115,17 @@ dim: {
 		}
 	},
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
-	command_report_parser: report => {
-		if (report && typeof report.Value === 'string') {
+	command_report_parser: (report, node) => {
+		if (!report) return null;
+		if (typeof report.Value === 'string') {
 			if (node) module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 			return (report.Value === 'on/enable') ? 1.0 : 0.0;
 		}
-		if (report && typeof report['Value (Raw)'] !== 'undefined') {
+		if (typeof report.Value === 'number') {
+			if (node) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+			return report.Value / 99;
+		}
+		if (typeof report['Value (Raw)'] !== 'undefined') {
 			if (report['Value (Raw)'] === 254) return null;
 			if (node) module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 			if (report['Value (Raw)'][0] === 255) return 1.0;
@@ -139,11 +150,9 @@ onoff: {
 	}),
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: report => {
-		if (report && typeof report['Current Value'] === 'string') return report['Current Value'] === 'on/enable';
-		if (report && typeof report['Current Value'] === 'number') {
-			if (report['Current Value'] === 254) return null;
-			return report['Current Value'] > 0;
-		}
+		if (!report) return null;
+		if (typeof report['Current Value'] === 'string') return report['Current Value'] === 'on/enable';
+		if (typeof report['Current Value'] === 'number') return report['Current Value'] > 0;
 		return null;
 	},
 }
@@ -163,11 +172,12 @@ dim: {
 	},
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: report => {
-		if (report && typeof report['Current Value'] === 'string') {
+		if (!report) return null;
+		if (typeof report['Current Value'] === 'string') {
 			if (node) module.exports.realtime(node.device_data, 'onoff', report['Current Value'] === 'on/enable');
 			return (report['Current Value'] === 'on/enable') ? 1.0 : 0.0;
 		}
-		if (report && typeof report['Current Value'] === 'number') {
+		if (typeof report['Current Value'] === 'number') {
 			if (report['Current Value'] === 254) return null;
 			if (node) module.exports.realtime(node.device_data, 'onoff', report['Current Value'] > 0);
 			if (report['Current Value'] === 255) return 1.0;
