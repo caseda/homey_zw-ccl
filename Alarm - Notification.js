@@ -5,6 +5,9 @@
  *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
+ * You are allowed to combine the alarm and notification reports
+ * just take into consideration that not 1 alarm type can cange the value of the other back
+ * code example for this is at the bottom of all codes
 */
 
 /*
@@ -30,6 +33,16 @@
 		return null;
 	}
 }
+// =========== ALTERNATE GET PARSER, ALARM VERSION 1 ===========
+// This is purely for when the device does NOT respond to (all) get functions of alarm and notification
+command_get_parser: node => {
+	if (node && node.state.[#CAPABILITY#] === 'undefined') {
+		node.state.[#CAPABILITY#] = false;
+	}
+	return {
+		'Alarm Type': '[#TYPEALARM#]'
+	};
+},
 
 /*
  * =========== GENERAL CODE: ALARM VERSION 2 (NOTIFICATION VERSION 3 - 8) ===========
@@ -67,17 +80,28 @@
 		return null;
 	}
 }
+// =========== ALTERNATE GET PARSER, ALARM VERSION 2 ===========
+// This is purely for when the device does NOT respond to (all) get functions of alarm and notification
+command_get_parser: node => {
+	if (node && node.state.[#CAPABILITY#] === 'undefined') {
+		node.state.[#CAPABILITY#] = false;
+	}
+	return {
+		'Alarm Type': '[#TYPEALARM-1#]'
+		'Z-Wave Alarm Type': [#TYPEALARM-2#],
+	};
+},
 
 
 
 /*
  * =========== GENERAL CODE: SPECIFIC, NOTIFICATION VERSION 3 - 8 ===========
  * [#CAPABILITY#] = the used capability
- * [#TYPEALARM#] = a supported sensor type
+ * [#ALARMNUMBER#] = a supported alarm type (the number)
  * Type = Value of 'V1 Alarm Type' found in SUPPORTED_GET (see code below)
- * [#TYPENOTIFICATION#] = a supported sensor type
+ * [#NOTIFICATION#] = a supported notification type (the full name)
  * Type = The number (GET) or name (GET/REPORT), displayed below
- * [#ALARMEVENT#] = the reported alarm event
+ * [#ALARMEVENT#] = the reported alarm event(s)
  * Event = The number, displayed below
  *
  * the GET will get a specific Notification type and it's event.
@@ -95,16 +119,60 @@
 	command_class: 'COMMAND_CLASS_NOTIFICATION',
 	command_get: 'NOTIFICATION_GET',
 	command_get_parser: () => ({
-		'V1 Alarm Type': [#TYPEALARM#],
-		'Notification Type': '[#TYPENOTIFICATION#]',
+		'V1 Alarm Type': [#ALARMNUMBER#],
+		'Notification Type': '[#NOTIFICATION#]',
 		Event: [#ALARMEVENT#]
 	}),
-	command_report: 'NOTIFICATION_SET',
+	command_report: 'NOTIFICATION_REPORT',
 	command_report_parser: report => {
-		if (report['Notification Type'] === '[#TYPENOTIFICATION#]') return report['Z-Wave Alarm Event'] === [#ALARMEVENT#];
+		if (report && report['Notification Type'] === '[#NOTIFICATION#]') {
+			// If there are multiple events you want to say "true" to
+			if (report['Event'] === [#ALARMEVENT-1#] || report['Event'] === [#ALARMEVENT-2#]) return true;
+			return false;
+			// If there is only 1 event you want to say "true" to
+			return report['Event'] === [#ALARMEVENT#];
+		}
 		return null;
 	}
 }
+// =========== ALTERNATE GET PARSER, NOTIFICATION VERSION 3 - 8 ===========
+// This is purely for when the device does NOT respond to (all) get functions of alarm and notification
+command_get_parser: node => {
+	if (node && node.state.[#CAPABILITY#] === 'undefined') {
+		node.state.[#CAPABILITY#] = false;
+	}
+	return {
+		'V1 Alarm Type': [#ALARMNUMBER#],
+		'Notification Type': '[#NOTIFICATION#]',
+		Event: [#ALARMEVENT#]
+	}
+},
+
+/*
+ * =========== EXAMPLE CODE: COMBINATION ALARM AND NOTIFICATION ===========
+ * This is just a global example code where you can put the above shown codes in
+ * Try to keep the amount of GET to a minimum, so only with alarm OR notification
+ */
+[#CAPABILITY#]: [
+	{
+		command_class: 'COMMAND_CLASS_ALARM',
+		command_get: 'ALARM_GET',
+		command_get_parser: () => ({
+			...
+		}),
+		command_report: 'ALARM_REPORT',
+		command_report_parser: report => {
+			...
+		}
+	},
+	{
+		command_class: 'COMMAND_CLASS_NOTIFICATION',
+		command_report: 'NOTIFICATION_REPORT',
+		command_report_parser: report => {
+			...
+		}
+	}
+]
 
 /*
  * =========== GENERAL CODE: GET SUPPORTED ALARM TYPES FROM SENSOR ===========
@@ -130,7 +198,8 @@
  * EVENT FROM VERSION 7: *******-
  * EVENT FROM VERSION 8: ********
  ===============================================================================
- * 1 - Smoke Alarm
+ * ALARM: 1 - Smoke Alarm
+ * NOTIFICATION: Smoke
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -150,7 +219,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 2 - CO Alarm
+ * ALARM: 2 - CO Alarm
+ * NOTIFICATION: CO
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -173,7 +243,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 3 - CO2 Alarm
+ * ALARM: 3 - CO2 Alarm
+ * NOTIFICATION: CO2
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -196,7 +267,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 4 - Heat Alarm
+ * ALARM: 4 - Heat Alarm
+ * NOTIFICATION: Heat
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -225,7 +297,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 5 - Water Alarm
+ * ALARM: 5 - Water Alarm
+ * NOTIFICATION: Water
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -259,8 +332,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- 6 - ALARM: * Access Control Alarm
- 6 - NOTIFICATION: * Acces Control
+ * ALARM: 6 - Access Control Alarm
+ * NOTIFICATION: Acces Control
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -330,8 +403,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- 7 - ALARM: * Burglar Alarm
- 7 - NOTIFICATION: * Home Security
+ * ALARM: 7 - Burglar Alarm
+ * NOTIFICATION: Home Security
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -358,8 +431,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 8 - ALARM: Power Management Alarm
- * 8 - NOTIFICATION: Power Management
+ * ALARM: 8 - Power Management Alarm
+ * NOTIFICATION: Power Management
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -383,8 +456,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- 9 - ALARM: * System Alarm
- 9 - NOTIFICATION: * System
+ * ALARM: 9 - System Alarm
+ * NOTIFICATION: System
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -400,7 +473,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 10 - Emergency Alarm
+ ALARM: 10 - Emergency Alarm
+ NOTIFICATION Emergency Alarm
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
@@ -412,7 +486,8 @@
  **------ 254 - Unknown Event
 
  ===============================================================================
- * 11 - Alarm Clock
+ * ALARM: 11 - Alarm Clock
+ * NOTIFICATION Clock
 
  ****---- 0 - Event inactive
 	EVENT PARAMETERS:
