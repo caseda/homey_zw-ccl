@@ -66,6 +66,7 @@ SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
 	signed: false, // signed: false is only needed if the value range of the parameter = 0 to max (also unsigned), instead of the default signed
+},
 
 /*
  * =========== SETTING RADIO ===========
@@ -123,7 +124,6 @@ SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
 	parser: newValue => new Buffer([(newValue) ? 0, 1]), // Parser is only needed if default value true = unchecked
-	signed: false, // signed: false is only needed if the value range of the parameter = 0 to max (also unsigned), instead of the default signed
 },
 
 /*
