@@ -21,7 +21,7 @@
  * 0x84 = COMMAND_CLASS_WAKE_UP
  * 0x05 = WAKE_UP_INTERVAL_GET
  *
- * If it is a battery device, it does need to be awake.
+ * The device does need to be awake just before sending this GET.
  *
  * Report back will be in Hexadecimal:
  * COMMAND_CLASS_WAKE_UP, data: 0x06#1#2#3#4
@@ -43,7 +43,7 @@ NODE_ID,0x84,0x05
  * 0x84 = COMMAND_CLASS_WAKE_UP
  * 0x09 = WAKE_UP_INTERVAL_CAPABILITIES_GET
  *
- * If it is a battery device, it does need to be awake.
+ * The device does need to be awake just before sending this GET.
  *
  * Report back will be in Hexadecimal:
  * COMMAND_CLASS_WAKE_UP, data: 0x0a#1#2#3#4#5#6#7#8#9#A#B#C
