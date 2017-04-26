@@ -219,3 +219,29 @@ SETTING_ID: {
 	}
 	return callback('unknown_error', false);
 });
+
+/*
+ * =========== GETTING A PARAMETER (RAW) ===========
+ * To get a certain parameter's information we can use the.
+ * "Send raw data" in the z-wave settings.
+ *
+ * NODE_ID = the node id you want the information from (Decimal or Hexadecimal)
+ * 0x70 = COMMAND_CLASS_CONFIGURATION
+ * 0x05 = CONFIGURATION_GET
+ * PARAMETER_NR = Parameter number you want to get (Decimal or Hexadecimal)
+ * only the numbers that are really present will work,
+ * the rest will be ignored by the device
+ *
+ * If it is a battery device, it does need to be awake.
+ * And not all devices will respond to the GET.
+ *
+ * Report back will be in Hexadecimal:
+ * COMMAND_CLASS_CONFIGURATION, data: 0x06#1#2#3#4#5#6
+ * 06 = CONFIGURATION_REPORT
+ * #1 = Parameter Number
+ * #2 = Parameter Size
+ * #3 = #6 = Parameter Value according to size
+ * IE: 0x066F0400007FFF = parameter: 111, size: 4, value 32767
+ */
+
+ NODE_ID,0x70,0x05,PARAMETER_NR
