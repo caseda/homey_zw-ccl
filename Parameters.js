@@ -222,7 +222,7 @@ SETTING_ID: {
 
 /*
  * =========== GETTING A PARAMETER (RAW) ===========
- * To get a certain parameter's information we can use the.
+ * To get a certain parameter's information we can use the
  * "Send raw data" in the z-wave settings.
  *
  * NODE_ID = the node id you want the information from (Decimal or Hexadecimal)
@@ -240,8 +240,11 @@ SETTING_ID: {
  * 06 = CONFIGURATION_REPORT
  * #1 = Parameter Number
  * #2 = Parameter Size
- * #3 = #6 = Parameter Value according to size
- * IE: 0x066F0400007FFF = parameter: 111, size: 4, value 32767
+ * #3 - #6 Parameter Value (depending on size)
+ *
+ * IE size 1: 0x06050103 = parameter: 5, size: 1, value 3
+ * IE size 2: 0x06120201FF = parameter: 18, size: 2, value 511
+ * IE size 4: 0x066F0400007FFF = parameter: 111, size: 4, value 32767
  */
 
  NODE_ID,0x70,0x05,PARAMETER_NR
