@@ -10,17 +10,17 @@
  * =========== APP.JSON ===========
 */
 {
-		"id": "APP_ID",
-		...
-		"drivers": [
-				{
-						"id": "DRIVER_ID",
-						...
-						"settings": [
+	"id": "APP_ID",
+	...
+	"drivers": [
+		{
+			"id": "DRIVER_ID",
+			...
+			"settings": [
 
-						]
-				}
-		]
+			]
+		}
+	]
 }
 // =========== DRIVER.JS ===========
 module.exports = new ZwaveDriver(path.basename(__dirname), {
