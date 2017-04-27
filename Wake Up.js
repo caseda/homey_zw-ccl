@@ -25,11 +25,14 @@
  *
  * Report back will be in Hexadecimal:
  * COMMAND_CLASS_WAKE_UP, data: 0x06#1#2#3#4
- * 06 = WAKE_UP_INTERVAL_REPORT
- * #1 - #3 = Default Seconds
- * #4 = receiving NODE_ID (Homey)
+ * 06       = WAKE_UP_INTERVAL_REPORT
+ * #1 - #3  = Wake up interval of a device in seconds
+ * #4       = NodeID of the device receiving the Wake Up Notification Command (Homey)
  *
- * IE: 0x06000e1001 = Default Seconds: 3600
+ * IE: 0x06000e1001 = 
+ * 0x06           = WAKE_UP_INTERVAL_REPORT
+ * 000e10 = 3600  = wake up interval of a device
+ * 01     = 1     = NodeID of the device receiving the Wake Up Notification Command
  */
 
 NODE_ID,0x84,0x05
@@ -47,13 +50,18 @@ NODE_ID,0x84,0x05
  *
  * Report back will be in Hexadecimal:
  * COMMAND_CLASS_WAKE_UP, data: 0x0a#1#2#3#4#5#6#7#8#9#A#B#C
- * 0a = WAKE_UP_INTERVAL_REPORT
- * #1 - #3 = Minimum Seconds
- * #4 - #6 = Maximum Seconds
- * #7 - #9 = Default Seconds
- * #A - #C = Step Size
+ * 0a       = WAKE_UP_IntervalCapabilitiesReport
+ * #1 - #3  = Minimum Wake Up Interval Seconds
+ * #4 - #6  = Maximum Wake Up Interval Seconds
+ * #7 - #9  = Default Wake Up Interval Seconds
+ * #A - #C  = Wake Up Interval Step Seconds
  *
- * IE:  0x0a0000f0000e10000e1000003c = min sec: 0, max sec: 3600, def sec: 3600, step size: 60 seconds
+ * IE:  0x0a0000f0000e10000e1000003c = 
+ * 0x0a			      = WAKE_UP_IntervalCapabilitiesReport
+ * 0000f0 = 240		= Minimum Wake Up Interval Seconds
+ * 000e10 = 3600	= Maximum Wake Up Interval Seconds
+ * 000e10 = 3600  = Default Wake Up Interval Seconds
+ * 00003c = 60		= Wake Up Interval Step Seconds
  */
 
 NODE_ID,0x84,0x09
