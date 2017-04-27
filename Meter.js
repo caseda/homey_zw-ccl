@@ -214,7 +214,7 @@
 */
 // ========== APP.JSON .actions[]: ==========
 {
-	"id": "micro_smart_plug_reset_meter",
+	"id": "reset_meter",
 	"title": {
 		"en": "Reset power meter (kWh)"
 	},
@@ -225,7 +225,7 @@
 		{
 			"name": "device",
 			"type": "device",
-			"filter": "driver_id=micro_smart_plug"
+			"filter": "driver_id=DRIVER_ID"
 		}
 	]
 }
