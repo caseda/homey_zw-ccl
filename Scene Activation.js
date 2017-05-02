@@ -41,8 +41,8 @@ module.exports.on('initNode', token => {
 	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION.on('report', (command, report) => {
 			if (command && command.name === 'SCENE_ACTIVATION_SET' && report && report.hasOwnProperty('Scene ID') && report['Scene ID'] === SCENE_ID) {
-        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, null, node.device_data);
-      }
+				Homey.manager('flow').triggerDevice('TRIGGER_ID', null, null, node.device_data);
+			}
 		});
 	}
 });
@@ -101,8 +101,8 @@ module.exports.on('initNode', token => {
 				const data = {
 					scene: report['Scene ID'].toString(), // This will be the SCENE_ID (converted to string) that the device sends
 				};
-        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
-      }
+				Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
+			}
 		});
 	}
 });

@@ -39,17 +39,17 @@
 module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 
-  if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
 			if (command &&
-        command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
-        report &&
+				command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
+				report &&
 				report.hasOwnProperty('Scene Number') && // Optional for 1 activation spot
 				report['Scene Number'] === ACTIVATION_ID && // Optional for 1 activation spot
 				report.hasOwnProperty('Properties1') &&
 				report.Properties1.hasOwnProperty('Key Attributes') &&
 				report.Properties1['Key Attributes'] === ATTRIBUTE) {
-        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
+				Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
 			}
 		});
 	}
@@ -104,11 +104,11 @@ module.exports.on('initNode', (token) => {
 module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 
-  if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
 			if (command &&
-        command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
-        report &&
+				command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
+				report &&
 				report.hasOwnProperty('Scene Number') &&  // Optional for 1 activation spot
 				report['Scene Number'] === ACTIVATION_ID && // Optional for 1 activation spot
 				report.hasOwnProperty('Properties1') &&
@@ -116,7 +116,7 @@ module.exports.on('initNode', (token) => {
 				const data = {
 					attribute: report.Properties1['Key Attributes'] // This will be the attribute of the press (amount/hold/release)
 				}
-        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
+				Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
 			}
 		});
 	}
@@ -124,7 +124,7 @@ module.exports.on('initNode', (token) => {
 // This part will make sure the send data is the same as te data selected in the flow card(s)
 Homey.manager('flow').on('trigger.TRIGGER_ID', (callback, args, state) => {
 	if(args &&
-    state &&
+		state &&
 		args.hasOwnProperty('attribute') &&
 		state.hasOwnProperty('attribute') &&
 		args.attribute === state.attribute) {
@@ -199,11 +199,11 @@ Homey.manager('flow').on('trigger.TRIGGER_ID', (callback, args, state) => {
 module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 
-  if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
 			if (command &&
-        command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
-        report &&
+				command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
+				report &&
 				report.hasOwnProperty('Scene Number') &&  // Optional for 1 activation spot
 				report.hasOwnProperty('Properties1') &&
 				report.Properties1.hasOwnProperty('Key Attributes')) {
@@ -211,7 +211,7 @@ module.exports.on('initNode', (token) => {
 					activation: report['Scene Number'].toString(), // This will be the id of the activation spot
 					attribute: report.Properties1['Key Attributes'] // This will be the attribute of the press (amount/hold/release)
 				}
-        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
+				Homey.manager('flow').triggerDevice('TRIGGER_ID', null, data, node.device_data);
 			}
 		});
 	}
@@ -220,7 +220,7 @@ module.exports.on('initNode', (token) => {
 Homey.manager('flow').on('trigger.TRIGGER_ID', (callback, args, state) => {
 	if(args &&
 		state &&
-    args.hasOwnProperty('activation') &&
+		args.hasOwnProperty('activation') &&
 		args.hasOwnProperty('attribute') &&
 		state.hasOwnProperty('activation') &&
 		state.hasOwnProperty('attribute') &&
