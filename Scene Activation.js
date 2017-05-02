@@ -9,7 +9,46 @@
 */
 
 /*
- * =========== APP.JSON ===========
+ * =========== APP.JSON SEPARATE ===========
+ * TRIGGER_ID = Unique id (for the app) of the flow card
+ * DRIVER_ID = The unique id of the driver
+*/
+{
+	"id": "TRIGGER_ID",
+	"title": {
+		"en": "FLOW_CARD_TITLE"
+	},
+	"hint": {
+		"en": "FLOW_CARD_HINT" // OPTIONAL
+	},
+	"args": [
+		{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=DRIVER_ID"
+		}
+	]
+}
+
+/*
+ * =========== DRIVER.JS SEPARATE ===========
+ * TRIGGER_ID = Unique id (for the app) of the flow card
+ * SCENE_ID = A supported id the device sends when sending a scene activation command, all supported id's should be in the manual of the device
+*/
+module.exports.on('initNode', token => {
+	const node = module.exports.nodes[token];
+
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION !== 'undefined') {
+		node.instance.CommandClass.COMMAND_CLASS_SCENE_ACTIVATION.on('report', (command, report) => {
+			if (command && command.name === 'SCENE_ACTIVATION_SET' && report && report.hasOwnProperty('Scene ID') && report['Scene ID'] === SCENE_ID) {
+        Homey.manager('flow').triggerDevice('TRIGGER_ID', null, null, node.device_data);
+      }
+		});
+	}
+});
+
+/*
+ * =========== APP.JSON DROPDOWN ===========
  * TRIGGER_ID = Unique id (for the app) of the flow card
  * DRIVER_ID = The unique id of the driver
  * SCENE_ID = The supported id's the device sends when sending a scene activation command, all supported id's should be in the manual of the device
@@ -50,7 +89,7 @@
 }
 
 /*
- * =========== DRIVER.JS ===========
+ * =========== DRIVER.JS DROPDOWN ===========
  * TRIGGER_ID = Unique id (for the app) of the flow card
 */
 module.exports.on('initNode', token => {
