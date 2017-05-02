@@ -69,6 +69,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [Fibaro](https://apps.athom.com/app/com.fibaro) - [Github](https://github.com/athombv/com.fibaro)
 - [Greenwave Systems](https://apps.athom.com/app/com.greenwavesystems) - [Github](https://github.com/athombv/com.greenwavesystems)
 - [Hauppauge](https://apps.athom.com/app/com.hauppauge) (Philio Re-brand) - [Github](https://github.com/markaswift/com.hauppauge)
+- [Logic Home Control](https://apps.athom.com/app/dk.logichome) - [Github](https://github.com/ktnielsen/dk.logichome)
 - [NEO CoolCam](https://apps.athom.com/app/com.neo) - [Github](https://github.com/mruiter/com.neo)
 - [NodOn](https://apps.athom.com/app/com.nodon) - [Github](https://github.com/caseda/com.nodon)
 - [PoPP EU](https://apps.athom.com/app/com.popp) - [Github](https://github.com/mruiter/com.popp)
