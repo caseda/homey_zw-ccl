@@ -58,7 +58,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
   - pdf: [List of Command Classes](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13548-1_list_of_defined_z-wave_command_classes.pdf)
   - pdf: [Command Class Specifications](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
 
-### Z-Wave Apps [Last Updated 02-05-2017]:
+### Z-Wave Apps [Last Updated 08-05-2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/athombv/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
@@ -79,7 +79,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [Sensitive](https://apps.athom.com/app/com.sensative) - [Github](https://github.com/Thorarin/com.sensative)
 - [Some Z-Wave](https://apps.athom.com/app/com.jilles.zwave) (Rare Brands) - [Github](https://github.com/nattlip/com.jilles.zwave)
 - [TKB Home](https://apps.athom.com/app/com.tkbhome) - [Github](https://github.com/caseda/com.tkbhome)
-- [Vision Security](https://apps.athom.com/app/com.visionsecurity) - [Github SergeRegoor (Appstore)](https://github.com/SergeRegoor/com.visionsecurity) - [Github priknr1](https://github.com/priknr1/com.visionsecurity) - [Github lsiddiquee](https://github.com/lsiddiquee/com.visionsecurity)
+- [Vision Security](https://apps.athom.com/app/com.visionsecurity) - [Github priknr1](https://github.com/priknr1/com.visionsecurity)
 - [Wintop](https://apps.athom.com/app/com.wintop) - [Github](https://github.com/clandmeter/com.wintop)
 - [Yale Lock](https://apps.athom.com/app/com.yalelock) - [Github](https://github.com/timeggleston/com.yalelock)
 - [Z-Wave.me](https://apps.athom.com/app/me.zwave) - [Github](https://github.com/IcarusProject/me.zwave)
