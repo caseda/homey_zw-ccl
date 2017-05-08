@@ -41,7 +41,7 @@
  * This can be worked around by adding the capability in the main node,
  * and add a custom mobile card and don't add that capability to it, and also add the "opional" tag to that capability in the driver.js.
  * This limitation will be lifted in a future Z-Wave Driver update, but is pretty hard to implement correctly.
- * The other way around is possible, an endpoint does not need all capabilities that the main node has.
+ * The other way around is possible, an end point does not need all capabilities that the main node has.
 */
 
 /*
@@ -50,8 +50,8 @@
  *
  * DRIVER_ID = The unique driver id of the app
  * MAIN_NODE_CAPABILITY = The capability(s) that the main node uses, and all capabilities of the end points
- * END_POINT_CLASS = The class the endpoint should be in, may be different from main node's class.
- * END_POINT_CAPABILITY = Capabiities in the endpoint, does need to be in the main node as well.
+ * END_POINT_CLASS = The class the end point should be in, may be different from main node's class.
+ * END_POINT_CAPABILITY = Capabiities in the end point, does need to be in the main node as well.
  * END_POINT_NAME = The default inclusion name the separate device has.
  */
 "id": "DRIVER_ID",
@@ -87,10 +87,10 @@
 
 /*
  * ============================================ DRIVER.JS COMBINED DEVICE ============================================
- * The app.json is the same as a normal driver, just make sure all capabilities are included.
+ * The app.json is the same as a normal driver.
  * If you have 2 of the same capabilities you can add sub capabilities.
  * IE: "measure_power.node1"
- * You will need to create your own mobile card and flow card(s) when using sub capabilities.
+ * You will need to create your own mobile card and flow card(s) (for the sub capability) when using sub capabilities.
  *
  * CAPABILITY = the used capability
  * END_POINT = The end point number
