@@ -57,32 +57,32 @@
 "id": "DRIVER_ID",
 ...
 "capabilities": [
-  "MAIN_NODE_CAPABILITY(S)"
+	"MAIN_NODE_CAPABILITY(S)"
 ],
 "zwave": {
-  ...
-  "multiChannelNodes": {
-  	"1": { // 1 = Optional for manufacturers when they use option 2
-  		"class": "END_POINT_CLASS",
-  		"capabilities": [
-  			"END_POINT_CAPABILITY(S)"
-  		],
-  		"icon": "/drivers/DRIVER_ID/assets/icon.svg", // icon may be different from the main node
-  		"name": {
-  			"en": "END_POINT_NAME"
-  		}
-  	},
-    "2": {
-  		"class": "END_POINT_CLASS",
-  		"capabilities": [
-  			"END_POINT_CAPABILITY(S)"
-  		],
-  		"icon": "/drivers/DRIVER_ID/assets/icon.svg", // ican may be different from the main node
-  		"name": {
-  			"en": "END_POINT_NAME"
-  		}
-  	}
-  }
+	...
+	"multiChannelNodes": {
+		"1": { // 1 = Optional for manufacturers when they use option 2
+			"class": "END_POINT_CLASS",
+			"capabilities": [
+				"END_POINT_CAPABILITY(S)"
+			],
+			"icon": "/drivers/DRIVER_ID/assets/icon.svg", // icon may be different from the main node
+			"name": {
+				"en": "END_POINT_NAME"
+			}
+		},
+		"2": {
+			"class": "END_POINT_CLASS",
+			"capabilities": [
+				"END_POINT_CAPABILITY(S)"
+			],
+			"icon": "/drivers/DRIVER_ID/assets/icon.svg", // ican may be different from the main node
+			"name": {
+				"en": "END_POINT_NAME"
+			}
+		}
+	}
 }
 
 /*
@@ -98,12 +98,12 @@
  * The rest of the capability is the same as a normal driver
  */
  module.exports = new ZwaveDriver(path.basename(__dirname), {
- 	capabilities: {
- 		CAPABILITY: {
-      multiChannelNodeId: END_POINT,
-      optional: false, // Set to true, if the capability is not used in the main node, can be removed if false
- 			command_class: 'COMMAND_CLASS',
-      ...
- 		},
-  },
+	capabilities: {
+		CAPABILITY: {
+			multiChannelNodeId: END_POINT,
+			optional: false, // Set to true, if the capability is not used in the main node, can be removed if false
+			command_class: 'COMMAND_CLASS',
+			...
+		},
+	},
 };
