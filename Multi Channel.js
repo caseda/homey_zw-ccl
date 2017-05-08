@@ -25,7 +25,7 @@
  * You can't take a middle route though, it's either option 1 OR option 2.
  *
  * There are also 2 ways that manufacturers handle multi channels:
- * 1: Manufacturers that keeps the Main Node and End Point 1 separate.
+ * 1: Manufacturers that keeps the Main Node and End Point(s) separate.
  * If you switch the main node, ALL end points will switch.
  * 2: Manufacturers that couple the Main Node with End Point 1 together.
  * So when switching the main node, only end point 1 will switch.
