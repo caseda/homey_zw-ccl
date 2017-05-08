@@ -79,7 +79,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [Sensitive](https://apps.athom.com/app/com.sensative) - [Github](https://github.com/Thorarin/com.sensative)
 - [Some Z-Wave](https://apps.athom.com/app/com.jilles.zwave) (Rare Brands) - [Github](https://github.com/nattlip/com.jilles.zwave)
 - [TKB Home](https://apps.athom.com/app/com.tkbhome) - [Github](https://github.com/caseda/com.tkbhome)
-- [Vision Security](https://apps.athom.com/app/com.visionsecurity) - [Github priknr1](https://github.com/priknr1/com.visionsecurity)
+- [Vision Security](https://apps.athom.com/app/com.visionsecurity) - [Github](https://github.com/priknr1/com.visionsecurity)
 - [Wintop](https://apps.athom.com/app/com.wintop) - [Github](https://github.com/clandmeter/com.wintop)
 - [Yale Lock](https://apps.athom.com/app/com.yalelock) - [Github](https://github.com/timeggleston/com.yalelock)
 - [Z-Wave.me](https://apps.athom.com/app/me.zwave) - [Github](https://github.com/IcarusProject/me.zwave)
