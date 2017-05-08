@@ -1,5 +1,5 @@
 /*
- * Homey CommandClass
+ * Homey Managment
  * Wake Up (GET ONLY)
  * Versions 1 - 2
  *
