@@ -195,10 +195,10 @@ SETTING_ID: {
 	if (args.hasOwnProperty("FLOW_VALUE_TO_BE_USE") && typeof node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION !== 'undefined') {
 		//Send parameter values to module
 		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
-			"Parameter Number": PARAMETER_NUMBER,
-			"Level": {
-				"Size": PARAMETER_SIZE,
-				"Default": false
+			'Parameter Number': PARAMETER_NUMBER,
+			Level: {
+				Size: PARAMETER_SIZE,
+				Default: false
 			},
 			'Configuration Value': new Buffer([PARAMETER_VALUE]) // PARAMETER VALUE must be a DECIMAL or HEXADECIMAL value
 		}, (err, result) => {
@@ -210,7 +210,7 @@ SETTING_ID: {
 				// `if (result === "TRANSMIT_COMPLETE_OK") return callback(null, true);`
 				// Set the device setting to this flow value
 				module.exports.setSettings(node.device_data, {
-					"SETTING_ID": SETTING_VALUE, // make sure the value type is the same as the setting type (IE: boolean)
+					'SETTING_ID': SETTING_VALUE, // make sure the value type is the same as the setting type (IE: boolean)
 				});
 				return callback(null, true);
 			}
