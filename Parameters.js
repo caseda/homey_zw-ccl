@@ -194,7 +194,7 @@ SETTING_ID: {
 
 	if (args.hasOwnProperty("FLOW_VALUE_TO_BE_USE") && typeof node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION !== 'undefined') {
 		//Send parameter values to module
-		node.instance.CommandClass['COMMAND_CLASS_CONFIGURATION'].CONFIGURATION_SET({
+		node.instance.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
 			'Parameter Number': PARAMETER_NUMBER,
 			Level: {
 				Size: PARAMETER_SIZE,
@@ -205,7 +205,7 @@ SETTING_ID: {
 			// If error, stop flow card
 			if (err) return callback(err, false);
 			// If properly transmitted, change the setting and finish flow card
-			if (result === "TRANSMIT_COMPLETE_OK") {
+			if (result === 'TRANSMIT_COMPLETE_OK') {
 				// If this parameter is not a setting(s) remove the setSetting function or use:
 				// `if (result === "TRANSMIT_COMPLETE_OK") return callback(null, true);`
 				// Set the device setting to this flow value
