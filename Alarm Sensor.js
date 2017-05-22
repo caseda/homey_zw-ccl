@@ -20,7 +20,7 @@
 	command_get_parser: () => ({
 		'Sensor Type': '[#TYPEALARM#]'
 	}),
-	command_report: 'SENSOR_MULTILEVEL_REPORT',
+	command_report: 'SENSOR_ALARM_REPORT',
 	command_report_parser: report => {
 		if (report['Sensor Type'] === '[#TYPEALARM#]') return report['Sensor State'] === 'alarm';
 		return null;
