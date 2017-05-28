@@ -128,14 +128,14 @@ dim: {
 		if (!report) return null;
 		if (typeof report.Value === 'string') {
 			if (node) {
-			if (node.state.onoff && node.state.onoff !== report.Value === 'on/enable') module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
+				if (node.state.onoff && node.state.onoff !== report.Value === 'on/enable') module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 				node.state.onoff = report.Value === 'on/enable';
 			}
 			return (report.Value === 'on/enable') ? 1.0 : 0.0;
 		}
 		if (typeof report.Value === 'number') {
 			if (node) {
-			if (node.state.onoff && node.state.onoff !== report.Value > 0) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+				if (node.state.onoff && node.state.onoff !== report.Value > 0) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 				node.state.onoff = report.Value > 0;
 			}
 			return report.Value / 99;
