@@ -52,8 +52,8 @@ dim: {
 	command_set: 'SWITCH_MULTILEVEL_SET',
 	command_set_parser: (value, node) => {
 		if (node) {
+      if (node.state.onoff && node.state.onoff !== value > 0) module.exports.realtime(node.device_data, 'onoff', value > 0);
 			node.state.onoff = value > 0;
-			module.exports.realtime(node.device_data, 'onoff', value > 0);
 		}
 		return {
 			Value: Math.round(value * 99),
@@ -64,23 +64,23 @@ dim: {
 		if (!report) return null;
 		if (typeof report.Value === 'string') {
 			if (node) {
+        if (node.state.onoff && node.state.onoff !== report.Value === 'on/enable') module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 				node.state.onoff = report.Value === 'on/enable';
-				module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 			}
 			return (report.Value === 'on/enable') ? 1.0 : 0.0;
 		}
 		if (typeof report.Value === 'number') {
 			if (node) {
+        if (node.state.onoff && node.state.onoff !== report.Value > 0) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 				node.state.onoff = report.Value > 0;
-				module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 			}
 			return report.Value / 99;
 		}
 		if (typeof report['Value (Raw)'] !== 'undefined') {
 			if (report['Value (Raw)'] === 254) return null;
 			if (node) {
+        if (node.state.onoff && node.state.onoff !== report['Value (Raw)'][0] > 0) module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 				node.state.onoff = report['Value (Raw)'][0] > 0;
-				module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 			}
 			if (report['Value (Raw)'][0] === 255) return 1.0;
 			return report['Value (Raw)'][0] / 99;
@@ -119,35 +119,32 @@ dim: {
 	command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
 	command_get: 'SWITCH_MULTILEVEL_GET',
 	command_set: 'SWITCH_MULTILEVEL_SET',
-	command_set_parser: (value, node) => {
-		if (node) module.exports.realtime(node.device_data, 'onoff', value > 0);
-		return {
-			Value: Math.round(value * 99),
-			'Dimming Duration': 'Factory default',
-		}
-	},
+	command_set_parser: (value, node) => ({
+		Value: Math.round(value * 99),
+		'Dimming Duration': 'Factory default',
+	}),
 	command_report: 'SWITCH_MULTILEVEL_REPORT',
 	command_report_parser: (report, node) => {
 		if (!report) return null;
 		if (typeof report.Value === 'string') {
 			if (node) {
+        if (node.state.onoff && node.state.onoff !== report.Value === 'on/enable') module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 				node.state.onoff = report.Value === 'on/enable';
-				module.exports.realtime(node.device_data, 'onoff', report.Value === 'on/enable');
 			}
 			return (report.Value === 'on/enable') ? 1.0 : 0.0;
 		}
 		if (typeof report.Value === 'number') {
 			if (node) {
+        if (node.state.onoff && node.state.onoff !== report.Value > 0) module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 				node.state.onoff = report.Value > 0;
-				module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 			}
 			return report.Value / 99;
 		}
 		if (typeof report['Value (Raw)'] !== 'undefined') {
 			if (report['Value (Raw)'] === 254) return null;
 			if (node) {
+				if (node.state.onoff && node.state.onoff !== report['Value (Raw)'][0] > 0) module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 				node.state.onoff = report['Value (Raw)'][0] > 0;
-				module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
 			}
 			if (report['Value (Raw)'][0] === 255) return 1.0;
 			return report['Value (Raw)'][0] / 99;
@@ -196,16 +193,16 @@ dim: {
 		if (!report) return null;
 		if (typeof report['Current Value'] === 'string') {
 			if (node) {
+				if (node.state.onoff && node.state.onoff !==  report['Current Value'] === 'on/enable') module.exports.realtime(node.device_data, 'onoff', report['Current Value'] === 'on/enable');
 				node.state.onoff = report['Current Value'] === 'on/enable';
-				module.exports.realtime(node.device_data, 'onoff', report['Current Value'] === 'on/enable');
 			}
 			return (report['Current Value'] === 'on/enable') ? 1.0 : 0.0;
 		}
 		if (typeof report['Current Value'] === 'number') {
 			if (report['Current Value'] === 254) return null;
 			if (node) {
+				if (node.state.onoff && node.state.onoff !== report['Current Value'] > 0) module.exports.realtime(node.device_data, 'onoff', report['Current Value'] > 0);
 				node.state.onoff = report['Current Value'] > 0;
-				module.exports.realtime(node.device_data, 'onoff', report['Current Value'] > 0);
 			}
 			if (report['Current Value'] === 255) return 1.0;
 			return report['Current Value'] / 99;
