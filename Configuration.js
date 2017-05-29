@@ -34,6 +34,38 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 });
 
 /*
+ * ======================================================= TEXT =======================================================
+ * ================================= APP.JSON =================================
+*/
+{
+	"id": "SETTING_ID",
+	"type": "text",
+	"label": {
+		"en": "SHORT_DESCRIPTION"
+	},
+	"value": "DEFAULT_VALUE",
+	"pattern": "REGEX_PATTERN, optional",
+	"hint": {
+		"en": "DESCRIPTION, optional"
+	}
+},
+// ================================= DRIVER.JS ================================
+SETTING_ID: {
+	index: PARAMETER_NUMBER,
+	size: PARAMETER_SIZE,
+	parser: (newValue, newSettings, deviceData) => {
+		// Your magic to make the value into an Buffer value
+		return new Buffer([]), // for 1 size parameters only
+
+		// for 1, 2 or 4 size parameters use this:
+		let bufferValue = new Buffer(PARAMETER_SIZE),
+		bufferValue.writeUIntBE(newValue, 0, PARAMETER_SIZE);
+		return bufferValue;
+	}
+	signed: false, // signed: false is only needed if the value range of the parameter = 0 to max (also unsigned), instead of the default signed
+},
+
+/*
  * ======================================================= DROPDOWN =======================================================
  * ================================= APP.JSON =================================
 */
@@ -124,7 +156,7 @@ SETTING_ID: {
 SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
-	parser: newValue => new Buffer([(newValue) ? 0, 1]), // Parser is only needed if default value true = unchecked
+	parser: (newValue, newSettings, deviceData) => new Buffer([(newValue) ? 0, 1]), // Parser is only needed if default value true = unchecked
 },
 
 /*
@@ -163,21 +195,23 @@ SETTING_ID: {
  SETTING_ID_1: {
  	index: PARAMETER_NUMBER,
  	size: PARAMETER_SIZE,
- 	parser: (newValue, newSetings) => {
+ 	parser: (newValue, newSettings, deviceData) => {
 		value = newValue + newSettings.SETTING_ID_2;
 
 		let buffer = new Buffer(PARAMETER_SIZE);
-		return buffer.writeUIntBE(value, 0, PARAMETER_SIZE);
+		buffer.writeUIntBE(value, 0, PARAMETER_SIZE);
+		return buffer;
 	},
  },
  SETTING_ID_2: {
  	index: PARAMETER_NUMBER,
  	size: PARAMETER_SIZE,
- 	parser: (newValue, newSetings) => {
+ 	parser: (newValue, newSettings, deviceData) => {
 		value = newSettings.SETTING_ID_1 + newValue;
 
 		let buffer = new Buffer(PARAMETER_SIZE);
-		return buffer.writeUIntBE(value, 0, PARAMETER_SIZE);
+		buffer.writeUIntBE(value, 0, PARAMETER_SIZE);
+		return buffer;
 	},
  },
 
