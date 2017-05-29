@@ -1,6 +1,6 @@
 /*
  * Homey Managment
- * Parameters
+ * Configuration
  *
  * JUST FOR REFERENCE!
  * Basic knowledge still needed.
@@ -34,8 +34,8 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 });
 
 /*
- * =========== SETTING DROPDOWN ===========
- * =========== APP.JSON ===========
+ * ======================================================= DROPDOWN =======================================================
+ * ================================= APP.JSON =================================
 */
 {
 	"id": "SETTING_ID",
@@ -62,7 +62,7 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		}
 	]
 }
-// =========== DRIVER.JS ===========
+// ================================= DRIVER.JS =================================
 SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
@@ -70,8 +70,8 @@ SETTING_ID: {
 },
 
 /*
- * =========== SETTING RADIO ===========
- * =========== APP.JSON ===========
+ * ======================================================= RADIO =======================================================
+ * ================================= APP.JSON =================================
 */
 {
 	"id": "SETTING_ID",
@@ -98,7 +98,7 @@ SETTING_ID: {
 		}
 	]
 }
-// =========== DRIVER.JS ===========
+// ================================= DRIVER.JS =================================
 SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
@@ -106,8 +106,8 @@ SETTING_ID: {
 },
 
 /*
- * =========== SETTING CHECKBOX ===========
- * =========== APP.JSON ===========
+ * ======================================================= CHECKBOX =======================================================
+ * ================================= APP.JSON =================================
 */
 {
 	"id": "SETTING_ID",
@@ -120,7 +120,7 @@ SETTING_ID: {
 	},
 	"value": DEFAULT_VALUE // true or false
 }
-// =========== DRIVER.JS ===========
+// ================================= DRIVER.JS =================================
 SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
@@ -128,8 +128,8 @@ SETTING_ID: {
 },
 
 /*
- * =========== SETTING NUMBER ===========
- * =========== APP.JSON ===========
+ * ======================================================= NUMBER =======================================================
+ * ================================= APP.JSON =================================
 */
 {
 	"id": "SETTING_ID",
@@ -147,7 +147,7 @@ SETTING_ID: {
 		"step": STEP_SIZE // optional
 	}
 }
-// =========== DRIVER.JS ===========
+// ================================= DRIVER.JS ================================
 SETTING_ID: {
 	index: PARAMETER_NUMBER,
 	size: PARAMETER_SIZE,
@@ -156,7 +156,7 @@ SETTING_ID: {
 },
 
 /*
- * =========== MULTIPLE SETTINGS, 1 PARAMETER ===========
+ * ============================================ MULTIPLE SETTINGS, 1 PARAMETER ============================================
  * Sometimes to increase user friendlyness you want to devide a parameter into several settings.
  * This is a reference how you could handle that in the DRIVER.JS
  */
@@ -182,7 +182,7 @@ SETTING_ID: {
  },
 
  /*
-  * =========== SETTING A PARAMETER WITH FLOW CARD ===========
+  * ============================================ SETTING A PARAMETER WITH FLOW CARD ============================================
   * This is not recommended to do for battery devices
   * since parameters are only set when they are woken up
   */
@@ -222,7 +222,7 @@ SETTING_ID: {
 });
 
 /*
- * =========== GETTING A PARAMETER (RAW) ===========
+ * ============================================ GETTING A PARAMETER (RAW) ============================================
  * To get a certain parameter's information we can use the
  * "Send raw data" in the z-wave settings.
  *
