@@ -59,12 +59,13 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
   - pdf: [Command Class Specification](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
   - xml: [Raw Command Class Specification](https://raw.githubusercontent.com/Z-Wave-Me/ExpertUI/master/storage/data/ZWave_cmd_classes.xml)
 
-### Z-Wave Apps [Last Updated 11-05-2017]:
+### Z-Wave Apps [Last Updated 05-06-2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/athombv/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
 - [Danfoss](https://apps.athom.com/app/com.danfoss) - [Github](https://github.com/athombv/com.danfoss)
 - [Devolo](https://apps.athom.com/app/com.devolo) - [Github](https://github.com/athombv/com.devolo)
+- [Domitech](https://apps.athom.com/app/nl.timkouters.domitech) - [Github](https://github.com/timkouters/nl.timkouters.domitech)
 - [Eurotronic Technology](https://apps.athom.com/app/org.eurotronic) - [Github](https://github.com/caseda/org.eurotronic)
 - [Everspring/Eminent](https://apps.athom.com/app/com.everspring) - [Github](https://github.com/ralfvd/com.everspring)
 - [Express Controls](https://apps.athom.com/app/com.sharedfunctions.homey-expresscontrols) - [Github](https://github.com/konradwalsh/com.sharedfunctions.homey-expresscontrols)
