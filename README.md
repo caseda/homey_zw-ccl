@@ -59,7 +59,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
   - pdf: [Command Class Specification](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
   - xml: [Raw Command Class Specification](https://raw.githubusercontent.com/Z-Wave-Me/ExpertUI/master/storage/data/ZWave_cmd_classes.xml)
 
-### Z-Wave Apps [Last Updated 05-06-2017]:
+### Z-Wave Apps [Last Updated 06-06-2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/athombv/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
@@ -82,6 +82,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [Secure/Horstmann](https://apps.athom.com/app/com.horstmann) - [Github](https://github.com/priknr1/com.horstmann)
 - [Sensitive](https://apps.athom.com/app/com.sensative) - [Github](https://github.com/Thorarin/com.sensative)
 - [Some Z-Wave](https://apps.athom.com/app/com.jilles.zwave) (Rare Brands) - [Github](https://github.com/nattlip/com.jilles.zwave)
+- [Thermo-Floor AS](https://apps.athom.com/app/no.thermofloor) - [Github](https://github.com/TedTolboom/no.ThermoFloor)
 - [TKB Home](https://apps.athom.com/app/com.tkbhome) - [Github](https://github.com/caseda/com.tkbhome)
 - [Vision Security](https://apps.athom.com/app/com.visionsecurity) - [Github](https://github.com/priknr1/com.visionsecurity)
 - [Wintop](https://apps.athom.com/app/com.wintop) - [Github](https://github.com/clandmeter/com.wintop)
