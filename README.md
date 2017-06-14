@@ -59,7 +59,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
   - pdf: [Command Class Specification](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
   - xml: [Raw Command Class Specification](https://raw.githubusercontent.com/Z-Wave-Me/ExpertUI/master/storage/data/ZWave_cmd_classes.xml)
 
-### Z-Wave Apps [Last Updated 06-06-2017]:
+### Z-Wave Apps [Last Updated 14 Jun 2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/athombv/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
@@ -77,6 +77,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [NodOn](https://apps.athom.com/app/com.nodon) - [Github](https://github.com/caseda/com.nodon)
 - [PoPP EU](https://apps.athom.com/app/com.popp) - [Github](https://github.com/mruiter/com.popp)
 - [Philio](https://apps.athom.com/app/com.philio) - [Github](https://github.com/Inversion-NL/com.philio)
+- [Qees](https://apps.athom.com/app/com.qees) - [Github](https://github.com/priknr1/com.qees)
 - [Qubino](https://apps.athom.com/app/com.qubino) - [Github](https://github.com/athombv/com.qubino)
 - [Remotec Technology](https://apps.athom.com/app/hk.com.remotec) - [Github](https://github.com/TedTolboom/hk.com.remotec)
 - [Secure/Horstmann](https://apps.athom.com/app/com.horstmann) - [Github](https://github.com/priknr1/com.horstmann)
