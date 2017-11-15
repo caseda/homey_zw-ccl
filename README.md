@@ -1,5 +1,11 @@
-# Z-Wave and Homey 101
-Here will be the most common (and requested) Homey code examples of specific Command Classes.  
+## Deprecated!
+This repo is deprecated, and should only be used as (emergency/update) reference  
+It is better (especially new apps) to build in [SDKv2](https://developer.athom.com/docs/apps/tutorial-Z-Wave.html), as new SDKv1 apps will not be accepted anymore.  
+And make use of the [meshdriver library](https://github.com/athombv/node-homey-meshdriver)  
+In the future also updates with SDKv1 will not be accepted anymore.
+
+# Z-Wave and Homey (SDKv1) 101 
+Here will be the most common (and requested) Homey code examples of specific Command Classes. 
 To start of your adventure in creating drivers for Homey is:
 + Collecting all data of the device:
   - Manufacturer ID
@@ -59,7 +65,7 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
   - pdf: [Command Class Specification](http://zwavepublic.com/sites/default/files/command_class_specs_2017A/sds13781-1_z-wave_application_command_class_specification.pdf)
   - xml: [Raw Command Class Specification](https://raw.githubusercontent.com/Z-Wave-Me/ExpertUI/master/storage/data/ZWave_cmd_classes.xml)
 
-### Z-Wave Apps [Last Updated 14 Jun 2017]:
+### Z-Wave Apps [Last Updated 15 Nov 2017]:
 - [Aeotec](https://apps.athom.com/app/com.aeotec) - [Github](https://github.com/athombv/com.aeotec)
 - [BeNext](https://apps.athom.com/app/eu.benext) - [Github](https://github.com/athombv/eu.benext)
 - [Danalock](https://apps.athom.com/app/com.danalock) - [Github](https://github.com/athombv/com.danalock)
@@ -71,7 +77,9 @@ Then here is a little somethin' if you want to replenish my Magic Powers:
 - [Express Controls](https://apps.athom.com/app/com.sharedfunctions.homey-expresscontrols) - [Github](https://github.com/konradwalsh/com.sharedfunctions.homey-expresscontrols)
 - [Fibaro](https://apps.athom.com/app/com.fibaro) - [Github](https://github.com/athombv/com.fibaro)
 - [Greenwave Systems](https://apps.athom.com/app/com.greenwavesystems) - [Github](https://github.com/athombv/com.greenwavesystems)
+- [Hank](https://apps.athom.com/app/com.hank-tech) - [Github](https://github.com/TedTolboom/com.hank-tech)
 - [Hauppauge](https://apps.athom.com/app/com.hauppauge) (Philio Re-brand) - [Github](https://github.com/markaswift/com.hauppauge)
+- [MCOHome](https://apps.athom.com/app/com.mcohome) - [Github](https://github.com/TedTolboom/com.mcohome)
 - [Logic Home Control](https://apps.athom.com/app/dk.logichome) - [Github](https://github.com/ktnielsen/dk.logichome)
 - [NEO CoolCam](https://apps.athom.com/app/com.neo) - [Github](https://github.com/mruiter/com.neo)
 - [NodOn](https://apps.athom.com/app/com.nodon) - [Github](https://github.com/caseda/com.nodon)
