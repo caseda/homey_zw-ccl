@@ -1,8 +1,8 @@
 ## Deprecated!
-This repo is deprecated, and should only be used as (emergency/update) reference
-It is better (especially new apps) to build in [SDKv2](https://developer.athom.com/docs/apps/tutorial-Z-Wave.html), as new SDKv1 apps will not be accepted anymore.
-And make use of the [meshdriver library](https://github.com/athombv/node-homey-meshdriver)
-In the future also updates with SDKv1 will not be accepted anymore.
+This repo is deprecated, and should only be used as (emergency/update) reference.  
+It is better (especially new apps) to build in [SDKv2](https://developer.athom.com/docs/apps/tutorial-Z-Wave.html), as new SDKv1 apps will not be accepted anymore.  
+And make use of the [meshdriver library](https://github.com/athombv/node-homey-meshdriver).  
+In the future also updates with SDKv1 will not be accepted anymore.  
 
 # Z-Wave and Homey (SDKv1) 101 
 Here will be the most common (and requested) Homey code examples of specific Command Classes. 
